@@ -30,10 +30,15 @@ case class RobotSimulator(direction: Course, position: (Int, Int)) {
     course.toList.foldLeft(this) {
       (result, c) =>
         c match {
-          case "left" => result.turnLeft
-          case "right" => result.turnRight
-          case "advance" => result.advance
+          case 'l' => result.turnLeft
+          case 'r' => result.turnRight
+          case 'a' => result.advance
         }
     }
   }
+}
+
+object RobotSimulator {
+  val robotNorth = new RobotSimulator(direction = North, position = (0, 0))
+  val robotSouth = new RobotSimulator(direction = South, position = (0, 0))
 }
