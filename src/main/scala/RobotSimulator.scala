@@ -14,15 +14,15 @@ case class RobotSimulator(direction: Course, position: (Int, Int)) {
 
   def turnLeft: RobotSimulator = direction match {
     case North => copy(West)
-    case South => copy(East)
     case East => copy(North)
+    case South => copy(East)
     case West => copy(South)
   }
 
   def turnRight: RobotSimulator = direction match {
     case North => copy(East)
-    case South => copy(West)
     case East => copy(South)
+    case South => copy(West)
     case West => copy(North)
   }
 
@@ -40,5 +40,7 @@ case class RobotSimulator(direction: Course, position: (Int, Int)) {
 
 object RobotSimulator {
   val robotNorth = new RobotSimulator(direction = North, position = (0, 0))
+  val robotEast = new RobotSimulator(direction = East, position = (0, 0))
   val robotSouth = new RobotSimulator(direction = South, position = (0, 0))
+  val robotWest = new RobotSimulator(direction = West, position = (0, 0))
 }
