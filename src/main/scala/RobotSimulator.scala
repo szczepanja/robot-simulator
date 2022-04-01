@@ -14,7 +14,15 @@ case class Robot(direction: Course, position: (Int, Int)) {
 
   import Course._
 
-  def advance: Robot = ???
+  def advance: Robot = {
+    val (x, y) = position
+    direction match {
+      case North => Robot(North, (x, y + 1))
+      case East => Robot(East, (x, y - 1))
+      case South => Robot(South, (x + 1, y))
+      case West => Robot(West, (x - 1, y))
+    }
+  }
 
   def turnLeft: Robot = direction match {
     case North => copy(West)
