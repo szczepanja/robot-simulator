@@ -1,14 +1,31 @@
 sealed trait Course
 
 case object Course {
-  case object North extends Course
+  object North extends Course
 
-  case object East extends Course
+  object East extends Course
 
-  case object South extends Course
+  object South extends Course
 
-  case object West extends Course
+  object West extends Course
 }
 
-case class RobotSimulator(direction: Course, position: (Int, Int))
+case class Robot(direction: Course, position: (Int, Int)) {
 
+  def advance: Robot = ???
+
+  def turnRight: Robot = ???
+
+  def turnLeft: Robot = ???
+
+  def robotSimulator(course: String): Robot = {
+    course.toList.foldLeft(this) {
+      (result, c) =>
+        c match {
+          case "left" => result.turnLeft
+          case "right" => result.turnRight
+          case "advance" => result.advance
+        }
+    }
+  }
+}
